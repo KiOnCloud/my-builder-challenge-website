@@ -794,10 +794,12 @@ main {
     font-weight: 600;
     font-size: 15px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    display: inline-block;
+    animation: fadeInUp 1.2s ease-out 1.3s both;
 }
 
 .linkedin-link:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) !important;
     box-shadow: 0 10px 24px rgba(10, 102, 194, 0.4);
     filter: brightness(1.05);
 }
