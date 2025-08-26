@@ -1092,7 +1092,6 @@ main {
 footer {
     text-align: center;
     padding: 40px 20px;
-    color: var(--text-secondary);
     font-size: 14px;
     position: relative;
     z-index: 2;
