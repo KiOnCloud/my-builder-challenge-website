@@ -1,27 +1,22 @@
-// Theme switching functionality
 let currentTheme = localStorage.getItem('theme') || 'dark';
 
-// Initialize theme
 function initializeTheme() {
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateThemeButton();
 }
 
-// Toggle theme function
 function toggleTheme() {
     currentTheme = currentTheme === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
     localStorage.setItem('theme', currentTheme);
     updateThemeButton();
     
-    // Add transition effect
     document.body.style.transition = 'all 0.3s ease';
     setTimeout(() => {
         document.body.style.transition = '';
     }, 300);
 }
 
-// Update theme button appearance
 function updateThemeButton() {
     const lightIcon = document.querySelector('.light-icon');
     const darkIcon = document.querySelector('.dark-icon');
@@ -39,7 +34,6 @@ function updateThemeButton() {
     }
 }
 
-// Add scroll animations
 function addScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -55,7 +49,6 @@ function addScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe all sections for scroll animations
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
         section.style.opacity = '0';
@@ -65,9 +58,7 @@ function addScrollAnimations() {
     });
 }
 
-// Add hover effects for interactive elements
 function addHoverEffects() {
-    // Simplified: only keep subtle card lift, remove hero/button forced transforms
     const cards = document.querySelectorAll('.fact-card');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -79,7 +70,6 @@ function addHoverEffects() {
     });
 }
 
-// Ripple effect on Send Message button
 function addRippleEffect() {
     document.addEventListener('click', function(e) {
         const button = e.target.closest('.contact-submit-btn');
@@ -98,40 +88,31 @@ function addRippleEffect() {
     });
 }
 
-// Add typing effect for the hero title
-// Disable typing effect to avoid height shifts
 function addTypingEffect() {
     const heroTitle = document.querySelector('.hero-title');
     if (!heroTitle) return;
     heroTitle.style.borderRight = 'none';
 }
 
-// Add parallax effect for cherry blossoms
 function addParallaxEffect() {
-    // Disabled: no blossom elements anymore
 }
 
-// Contact form handler - Sends form data to AWS Lambda
-const LAMBDA_URL = 'YOUR_LAMBDA_FUNCTION_URL_HERE'; // Replace with your Function URL
+const LAMBDA_URL = 'YOUR_LAMBDA_FUNCTION_URL_HERE';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize theme
     initializeTheme();
     
-    // Add event listeners
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', toggleTheme);
     }
     
-    // Add animations and effects
     addScrollAnimations();
     addHoverEffects();
     addTypingEffect();
     addParallaxEffect();
     addRippleEffect();
     
-    // Contact form functionality
     const form = document.querySelector('.contact-form-container');
     if (form) {
         form.addEventListener('submit', async function(e) {
@@ -140,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitBtn = form.querySelector('.contact-submit-btn');
             const messageDiv = document.getElementById('form-message');
 
-            // Show loading state with spinner
             const originalText = submitBtn.textContent;
             submitBtn.classList.add('loading');
             submitBtn.textContent = 'Sending...';
@@ -148,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
             messageDiv.classList.remove('show', 'hide', 'success', 'error');
             messageDiv.style.display = 'none';
 
-            // Get form data
             const formData = {
                 name: form.name.value,
                 email: form.email.value,
@@ -174,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Network error. Please check your connection and try again.', 'error');
             }
 
-            // Reset button
             submitBtn.classList.remove('loading');
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
@@ -186,12 +164,10 @@ function showMessage(text, type) {
     const messageDiv = document.getElementById('form-message');
     messageDiv.textContent = text;
     messageDiv.className = `form-message ${type}`;
-    // force restart animation
     void messageDiv.offsetWidth;
     messageDiv.classList.add('show');
     messageDiv.style.display = 'block';
 
-    // Auto-hide after 5 seconds with exit animation
     setTimeout(() => {
         messageDiv.classList.remove('show');
         messageDiv.classList.add('hide');
@@ -202,7 +178,6 @@ function showMessage(text, type) {
     }, 5000);
 }
 
-// Add smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -222,15 +197,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add keyboard shortcuts
 document.addEventListener('keydown', function(e) {
-    // Ctrl/Cmd + K to toggle theme
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         toggleTheme();
     }
     
-    // Escape key to close any open modals or messages
     if (e.key === 'Escape') {
         const messageDiv = document.getElementById('form-message');
         if (messageDiv && messageDiv.style.display !== 'none') {

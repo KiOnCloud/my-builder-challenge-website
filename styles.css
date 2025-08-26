@@ -1,6 +1,4 @@
-/* CSS Variables for Theme Support */
 :root {
-    /* Light Theme Colors */
     --bg-primary: #ffffff;
     --bg-secondary: #f8fafc;
     --text-primary: #232f3e;
@@ -19,7 +17,6 @@
 }
 
 [data-theme="dark"] {
-    /* Dark Theme Colors */
     --bg-primary: #1a1a2e;
     --bg-secondary: #16213e;
     --text-primary: #e2e8f0;
@@ -54,7 +51,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Pixel grid animated background */
 body::before {
     content: '';
     position: fixed;
@@ -77,7 +73,6 @@ body::before {
     }
 }
 
-/* Theme Toggle Button */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -132,139 +127,10 @@ body::before {
     transform: scale(1);
 }
 
-/* Japanese Animation Elements */
-/* Disabled: animation container removed */
 .animation-container {
     display: none;
 }
 
-/* Cherry Blossom Animations */
-.cherry-blossoms {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.blossom {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: var(--blossom-color);
-    border-radius: 50% 0 50% 0;
-    opacity: 0.7;
-    animation: fall 10s linear infinite;
-}
-
-.blossom::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.blossom-1 {
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 12s;
-}
-
-.blossom-2 {
-    left: 30%;
-    animation-delay: 2s;
-    animation-duration: 15s;
-}
-
-.blossom-3 {
-    left: 50%;
-    animation-delay: 4s;
-    animation-duration: 18s;
-}
-
-.blossom-4 {
-    left: 70%;
-    animation-delay: 6s;
-    animation-duration: 14s;
-}
-
-.blossom-5 {
-    left: 90%;
-    animation-delay: 8s;
-    animation-duration: 16s;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.7;
-    }
-
-    90% {
-        opacity: 0.7;
-    }
-
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* Wave Animations */
-.waves {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-}
-
-.wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: var(--wave-color);
-    border-radius: 50% 50% 0 0;
-    animation: wave 8s ease-in-out infinite;
-}
-
-.wave-1 {
-    animation-delay: 0s;
-    opacity: 0.3;
-}
-
-.wave-2 {
-    animation-delay: 2s;
-    opacity: 0.2;
-}
-
-.wave-3 {
-    animation-delay: 4s;
-    opacity: 0.1;
-}
-
-@keyframes wave {
-
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-        transform: translateX(-50%) translateY(-20px);
-    }
-}
-
-/* Main Content Styles */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -273,7 +139,6 @@ main {
     z-index: 2;
 }
 
-/* Hero Section */
 .hero {
     background: var(--bg-primary);
     padding: 60px 40px;
@@ -291,7 +156,6 @@ main {
     border-radius: 16px;
 }
 
-/* Pixel border (AWS-inspired) for sections */
 .pixel-frame {
     position: relative;
     border: 4px solid var(--border-color);
@@ -323,185 +187,8 @@ main {
     }
 }
 
-/* Mini slow-floating orbits shown on hero hover */
 .section-orbits {
     display: none;
-}
-
-.section-orbits .orbit {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--blossom-color);
-    border-radius: 50% 0 50% 0;
-    filter: blur(0.2px);
-    opacity: 0.8;
-    transform-origin: 50% 50%;
-}
-
-/* Individual orbits with different paths and durations (slow) */
-.section-orbits .o1 {
-    top: 10%;
-    left: 15%;
-    animation: orbit-a 9s linear infinite paused;
-}
-
-.section-orbits .o2 {
-    top: 20%;
-    right: 12%;
-    animation: orbit-b 11s linear infinite paused;
-}
-
-.section-orbits .o3 {
-    bottom: 18%;
-    left: 20%;
-    animation: orbit-c 13s linear infinite paused;
-}
-
-.section-orbits .o4 {
-    bottom: 12%;
-    right: 18%;
-    animation: orbit-d 15s linear infinite paused;
-}
-
-.section-orbits .o5 {
-    top: 45%;
-    left: 8%;
-    animation: orbit-e 17s linear infinite paused;
-}
-
-.section-orbits .o6 {
-    top: 35%;
-    right: 6%;
-    animation: orbit-f 19s linear infinite paused;
-}
-
-.hero:hover .section-orbits .orbit {
-    animation-play-state: running;
-}
-
-@keyframes orbit-a {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-
-    25% {
-        transform: translate(20px, -8px) rotate(90deg);
-    }
-
-    50% {
-        transform: translate(0, -16px) rotate(180deg);
-    }
-
-    75% {
-        transform: translate(-20px, -8px) rotate(270deg);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
-}
-
-@keyframes orbit-b {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-
-    25% {
-        transform: translate(-24px, 10px) rotate(90deg);
-    }
-
-    50% {
-        transform: translate(0, 20px) rotate(180deg);
-    }
-
-    75% {
-        transform: translate(24px, 10px) rotate(270deg);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
-}
-
-@keyframes orbit-c {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-
-    33% {
-        transform: translate(18px, 14px) rotate(120deg);
-    }
-
-    66% {
-        transform: translate(-18px, 14px) rotate(240deg);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
-}
-
-@keyframes orbit-d {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-
-    20% {
-        transform: translate(-22px, -12px) rotate(72deg);
-    }
-
-    40% {
-        transform: translate(0, -20px) rotate(144deg);
-    }
-
-    60% {
-        transform: translate(22px, -12px) rotate(216deg);
-    }
-
-    80% {
-        transform: translate(0, 0) rotate(288deg);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
-}
-
-@keyframes orbit-e {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-
-    25% {
-        transform: translate(16px, 8px) rotate(90deg);
-    }
-
-    50% {
-        transform: translate(0, 16px) rotate(180deg);
-    }
-
-    75% {
-        transform: translate(-16px, 8px) rotate(270deg);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
-}
-
-@keyframes orbit-f {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-
-    50% {
-        transform: translate(-20px, -10px) rotate(180deg);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
 }
 
 .hero::before {
@@ -529,18 +216,6 @@ main {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
     }
 }
 
@@ -633,7 +308,6 @@ main {
     filter: brightness(1.05);
 }
 
-/* Fun Facts Section */
 .fun-facts {
     background: var(--bg-primary);
     padding: 40px;
@@ -765,7 +439,6 @@ main {
     text-decoration: underline;
 }
 
-/* AWS Journey Section */
 .aws-journey {
     background: var(--bg-primary);
     padding: 40px;
@@ -865,7 +538,6 @@ main {
     filter: saturate(1.15) brightness(1.05);
 }
 
-/* Contact Form Styles */
 .contact-form {
     background: var(--bg-primary);
     padding: 40px;
@@ -943,7 +615,6 @@ main {
     backdrop-filter: blur(4px);
 }
 
-/* Entrance and exit animations */
 @keyframes msg-pop-in {
     0% {
         opacity: 0;
@@ -992,7 +663,6 @@ main {
     border-left-color: #ef4444;
 }
 
-/* Icons for success/error */
 .form-message.success::before,
 .form-message.error::before {
     content: '';
@@ -1021,7 +691,6 @@ main {
     -webkit-mask-image: linear-gradient(black, black);
 }
 
-/* Animated visibility helpers */
 .form-message.show {
     display: block;
     animation: msg-pop-in 420ms cubic-bezier(.22, .61, .36, 1) forwards;
@@ -1088,7 +757,6 @@ main {
     box-shadow: 0 8px 25px rgba(120, 119, 198, 0.3);
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -1097,7 +765,6 @@ footer {
     z-index: 2;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 36px;
@@ -1142,7 +809,6 @@ footer {
     }
 }
 
-/* Dark theme specific adjustments */
 [data-theme="dark"] body::before {
     background:
         linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
@@ -1152,7 +818,6 @@ footer {
     background-size: 16px 16px, 16px 16px, 100% 100%, 100% 100%;
 }
 
-/* Interactive hover and click effects */
 .aws-link,
 .cta-button,
 .contact-submit-btn {
@@ -1160,8 +825,6 @@ footer {
     overflow: hidden;
 }
 
-/* Sheen effect across interactive buttons/links */
-/* Disable sheen */
 .aws-link::after,
 .cta-button::after,
 .contact-submit-btn::after {
@@ -1174,12 +837,10 @@ footer {
     left: 150%;
 }
 
-/* Card hover accent */
 .fact-card:hover {
     border-color: var(--accent-primary);
 }
 
-/* Ripple effect for Send Message button */
 .contact-submit-btn .ripple {
     position: absolute;
     border-radius: 50%;
@@ -1196,7 +857,6 @@ footer {
     }
 }
 
-/* Loading spinner while sending */
 .contact-submit-btn.loading {
     pointer-events: none;
     opacity: 0.95;
