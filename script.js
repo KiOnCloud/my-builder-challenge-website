@@ -67,19 +67,14 @@ function addScrollAnimations() {
 
 // Add hover effects for interactive elements
 function addHoverEffects() {
-    const interactiveElements = document.querySelectorAll('.fact-card, .aws-link, .cta-button, .contact-submit-btn');
-    
-    interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            this.style.transform = this.style.transform.replace('translateY(-2px)', 'translateY(-4px)');
-            this.style.transform = this.style.transform.replace('translateY(-4px)', 'translateY(-4px)');
-            if (!this.style.transform.includes('translateY(-4px)')) {
-                this.style.transform += ' translateY(-4px)';
-            }
+    // Simplified: only keep subtle card lift, remove hero/button forced transforms
+    const cards = document.querySelectorAll('.fact-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-4px)';
         });
-        
-        element.addEventListener('mouseleave', function() {
-            this.style.transform = this.style.transform.replace('translateY(-4px)', 'translateY(0)');
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
         });
     });
 }
@@ -113,15 +108,7 @@ function addTypingEffect() {
 
 // Add parallax effect for cherry blossoms
 function addParallaxEffect() {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const blossoms = document.querySelectorAll('.blossom');
-        
-        blossoms.forEach((blossom, index) => {
-            const speed = 0.5 + (index * 0.1);
-            blossom.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
+    // Disabled: no blossom elements anymore
 }
 
 // Contact form handler - Sends form data to AWS Lambda
