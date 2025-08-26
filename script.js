@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.classList.add('loading');
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
+            messageDiv.classList.remove('show', 'hide', 'success', 'error');
             messageDiv.style.display = 'none';
 
             // Get form data
@@ -185,12 +186,20 @@ function showMessage(text, type) {
     const messageDiv = document.getElementById('form-message');
     messageDiv.textContent = text;
     messageDiv.className = `form-message ${type}`;
+    // force restart animation
+    void messageDiv.offsetWidth;
+    messageDiv.classList.add('show');
     messageDiv.style.display = 'block';
 
-    // Auto-hide after 10 seconds
+    // Auto-hide after 5 seconds with exit animation
     setTimeout(() => {
-        messageDiv.style.display = 'none';
-    }, 10000);
+        messageDiv.classList.remove('show');
+        messageDiv.classList.add('hide');
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+            messageDiv.classList.remove('hide');
+        }, 220);
+    }, 5000);
 }
 
 // Add smooth scrolling for anchor links
